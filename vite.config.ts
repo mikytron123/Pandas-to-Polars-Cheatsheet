@@ -5,7 +5,8 @@ import vuetify from 'vite-plugin-vuetify';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(),
-    ViteYaml(),
-  vuetify({autoImport: true})],
-base:'/'})
+  ViteYaml(),
+  vuetify({ autoImport: true })],
+  base: '/Pandas-to-Polars-Cheatsheet'
+})
 
