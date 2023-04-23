@@ -1,0 +1,110 @@
+selectrowsbypos:
+  pandascode: |
+    # select rows by indices
+    df.iloc[[1,3,4],:]
+    # select rows by slicing
+    df.iloc[2:4,:]
+  polarscode: |
+    # select rows by indices
+    df[[1,3,4],:]
+    # select rows by slicing
+    df[2:4,:]
+
+selectcolsbypos:
+  pandascode: |
+    # select column by indices
+    df.iloc[:,[1,3,4]]
+    # select column by slicing
+    df.iloc[:,2:4]
+  polarscode: |
+    # select column by indices
+    df[:,[1,3,4]]
+    # select column by slicing
+    df[:,2:4]
+
+selectcolsbylabel:
+  pandascode: |
+    df.loc[:,["col1","col2"]]
+  polarscode:
+    df[:,["col1","col2"]]
+
+boolmask:
+  pandascode: |
+    df.loc[(df["col1"]>3) & (df["col2"]<5)]
+  polarscode: |
+    import polars as pl
+    df.filter((pl.col("col1")>3) & (pl.col("col2")<5))
+
+isin:
+  pandascode: |
+    df.loc[df["a"].isin([1,2,3])]
+  polarscode: |
+    import polars as pl
+    df.filter(pl.col("a").is_in([1,2,3]))
+
+concat:
+  pandascode: |
+    import pandas as pd
+    #concat vertically
+    df3 = pd.concat([df1,df2],axis="index")
+    #concat horizontally
+    df3 = pd.concat([df1,df2],axis="columns")
+  polarscode: |
+    import polars as pl
+    #concat vertically
+    df3 = pl.concat([df1,df2],how="vertical")
+    #concat horizontally
+    df3 = pl.concat([df1,df2],how="horizontal")
+
+join:
+  pandascode: |
+    df3 = df1.join(df2)
+  polarscode: |
+    df3 = df1.join(df2)
+
+pivot:
+  pandascode: |
+    df.pivot(index='foo', columns='bar', values='baz')
+  polarscode: |
+    df.pivot(index="foo", columns="bar", values="baz")
+
+dummies:
+  pandascode: |
+    import pandas as pd
+    pd.get_dummies(df,columns=["col1","col2"])
+  polarscode: |
+    df.to_dummies(columns=["col1","col2"])
+
+fillna:
+  pandascode: |
+    df.fillna(2)
+    #fill missing values with 2
+  polarscode: |
+    df.fill_null(2)
+    #fill missing values with 2
+
+fillstrategy:
+  pandascode: |
+    df.fillna(method="ffill")
+    #fill missing value using last valid observation
+    df.fillna(method="bfill")
+    #fill missing value using next valid obersvation
+  polarscode: |
+    df.fill_null(strategy="forward")
+    #fill missing value using last valid observation
+    df.fill_null(strategy="backward")
+    #fill missing value using next valid obersvation
+
+dropnan:
+  pandascode: |
+    df.dropna(subset=["col1","col2"])
+  polarscode: |
+    df.drop_nulls(subset=["col1","col2"])
+
+agg:
+  pandascode: |
+    df.groupby(["A"]).agg(["count","sum"])
+  polarscode: |
+    import polars as pl
+    df.groupby(["A"]).agg([pl.count(),pl.sum()]
+
