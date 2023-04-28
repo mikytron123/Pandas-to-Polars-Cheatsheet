@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import hljs from 'highlight.js';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-okaidia.css'
 import 'prismjs/components/prism-python';

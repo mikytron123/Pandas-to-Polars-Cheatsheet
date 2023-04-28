@@ -9,8 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@highlightjs/vue-plugin": "github:highlightjs/vue-plugin",
-    "highlightjs-line-numbers.js": "^2.8.0",
     "prismjs": "^1.29.0",
     "vite-plugin-vuetify": "^1.0.2",
     "vue": "^3.2.47",

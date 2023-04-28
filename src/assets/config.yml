@@ -42,6 +42,19 @@ isin:
     import polars as pl
     df.filter(pl.col("a").is_in([1,2,3]))
 
+where:
+  pandascode: |
+    import numpy as np
+    df['color'] = np.where(df['col2'] == 'Z', 'green', 'red')
+  polarscode: |
+    import polars as pl
+    df = (df.with_columns(
+        pl.when(pl.col("col2")=='Z')
+        .then("green")
+        .otherwise("red")
+        .alias("color")
+        ))
+
 concat:
   pandascode: |
     import pandas as pd

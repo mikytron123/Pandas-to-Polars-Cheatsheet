@@ -1,8 +1,6 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import hljs from 'highlight.js/lib/core';
-import python from 'highlight.js/lib/languages/python';
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -15,7 +13,6 @@ const vuetify = createVuetify({
 })
 
 
-hljs.registerLanguage('python', python);
 
 const app = createApp(App)
 app.use(vuetify)

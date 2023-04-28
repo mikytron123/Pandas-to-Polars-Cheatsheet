@@ -2,14 +2,13 @@
 import { ref, onUpdated} from 'vue'
 import type {Ref} from 'vue'
 import config from './assets/config.yml'
-import hljs from 'highlight.js'
 import Card from './components/Card.vue'
 
 const categories = ref(["Indexing and Selecting Data",
                         "Merge,join and concatenate",
                         "Reshaping and pivot tables",
                         "Working with missing data",
-						"Group by operations"])
+						            "Group by operations"])
 const codeElement:Ref<HTMLElement | null> = ref(null)
 const selectElement:Ref<HTMLFormElement | null> = ref(null)
 var operations:Ref<string[]> = ref([])
@@ -28,7 +27,8 @@ function categorychange(e:string){
                        "select column by position",
                        "select column by label",
                        "select rows by boolean filter",
-                       "select rows using a list of values"]
+                       "select rows using a list of values",
+                       "setting with enlargement using a condition"]
   } else if (category === "Merge,join and concatenate"){
     operations.value = ["Concatenate dataframes",
                        "Join two dataframes using inner join"]
@@ -76,6 +76,8 @@ function operationchange(e:string){
     configkey = "dropnan"
   } else if (op === "Aggregate data"){
     configkey = "agg"
+  } else if (op === "setting with enlargement using a condition"){
+    configkey = "where"
   }
   
   if (configkey===""){
