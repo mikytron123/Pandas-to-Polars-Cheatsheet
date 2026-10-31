@@ -19,7 +19,7 @@
     "@modyfi/vite-plugin-yaml": "^1.0.2",
     "@types/prismjs": "^1.26.6",
     "@vitejs/plugin-vue": "^6.0.10",
-    "typescript": "^7.0.2",
+    "typescript": "^5.9.3",
     "vite": "npm:@voidzero-dev/vite-plus-core@1.4.0",
     "vite-plus": "1.4.0",
     "vue-tsc": "^3.3.14"

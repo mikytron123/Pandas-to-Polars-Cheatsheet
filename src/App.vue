@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onUpdated } from "vue";
 import type { Ref } from "vue";
-import config from "./assets/config.yml";
+import config from "./assets/config.yaml";
 import Card from "./components/Card.vue";
 
 const categories = ref([
@@ -18,11 +18,15 @@ var pandascode = ref(`import pandas as pd`);
 
 var polarscode = ref(`import polars as pl`);
 
-function categorychange(e: string) {
+function categorychange(e: string | null) {
   //const category = (e.target as HTMLSelectElement)?.value
   const category = e;
   if (selectElement.value != null) {
     selectElement.value?.reset();
+  }
+  if (category === null) {
+    operations.value = [];
+    return;
   }
   if (category === "Indexing and Selecting Data") {
     operations.value = [
@@ -51,8 +55,11 @@ function categorychange(e: string) {
   }
 }
 
-function operationchange(e: string) {
+function operationchange(e: string | null) {
   //const op = ((e.target as HTMLSelectElement)?.value)
+  if (e === null) {
+    return;
+  }
   const op = e;
   var configkey = "";
 
