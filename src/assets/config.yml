@@ -25,8 +25,7 @@ selectcolsbypos:
 selectcolsbylabel:
   pandascode: |
     df.loc[:,["col1","col2"]]
-  polarscode:
-    df[:,["col1","col2"]]
+  polarscode: df[:,["col1","col2"]]
 
 boolmask:
   pandascode: |
@@ -120,4 +119,3 @@ agg:
   polarscode: |
     import polars as pl
     df.groupby(["A"]).agg([pl.count(),pl.sum()]
-
